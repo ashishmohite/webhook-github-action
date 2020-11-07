@@ -1,5 +1,5 @@
-name: 'Codepipeline Webhook Action'
-description: 'Codepipeline Webhook Action'
+name: 'Webhook Github Action'
+description: 'Webhook Github Action'
 inputs:
   webhook_url:
     description: 'URL of the Webhook'
