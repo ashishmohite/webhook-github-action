@@ -1,15 +1,27 @@
-import fetch from 'node-fetch';
+import fetch, { Headers } from "node-fetch";
 
-async function requests(url = '', method: string, headers: string, data: string|undefined): Promise<string> {
-    console.log(url);
-    console.log(headers);
-    console.log(JSON.parse(JSON.stringify(headers)));
-    const response = await fetch(url, {
-      method: method,
-      body: JSON.stringify(data)
-    });
+async function requests(
+  url = "",
+  method = "GET",
+  headers = "",
+  data: string | "{}"
+): Promise<string> {
+  interface Params {
+    method: string;
+    headers: Headers;
+    [key: string]: any;
+  }
 
-    return await response.text();
+  const params: Params = {
+    method: method,
+    headers: new Headers(JSON.parse(headers)),
+  };
+
+  if (method != "GET") {
+    params.body = data;
+  }
+  const response = await fetch(url, params);
+  return await response.text();
 }
 
 export const sendRequest = requests;

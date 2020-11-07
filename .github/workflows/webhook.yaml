@@ -1,0 +1,20 @@
+name: Test Webhook action
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Call Webhook Get
+        uses: scalereal/webhook-github-action@master
+        with:
+            webhook_url: "https://postman-echo.com/get"
+

@@ -4,11 +4,14 @@ inputs:
   webhook_url:
     description: 'URL of the Webhook'
     required: true
+  headers:
+    description: 'JSON Headers of the request'
+    required: false
   method:
     description: 'Method for the REST Webhook call'
     required: false
   body:
-    description: 'body for the REST Webhook call in case of POST, PUT, PATCH methods'
+    description: 'JSON body for the REST Webhook call in case of POST, PUT, PATCH methods'
     required: false
 
 runs:
